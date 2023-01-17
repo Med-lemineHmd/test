@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Header, Footer } from "./components";
 
-function App() {
+const data = [
+  {
+    name: "Mo",
+    desc: "lorem",
+  },
+  {
+    name: "Alex",
+    desc: "lorem",
+  },
+  {
+    name: "Ran",
+    desc: "lorem",
+  },
+  {
+    name: "Conan",
+    desc: "lorem",
+  },
+  {
+    name: "Togo",
+    desc: "lorem",
+  },
+];
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header title="This is a Header" />
+      <main>
+        {data.map((item) => (
+          <ul key={`${Math.random()}-id`}>
+            <li>{item.name}</li>
+            <li>{item.desc}</li>
+          </ul>
+        ))}
+      </main>
+      <Footer title="This is a Footer" />
     </div>
   );
-}
+};
 
 export default App;
