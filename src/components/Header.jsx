@@ -1,4 +1,5 @@
 import React from "react";
+import HigherComp from "./HigherComp";
 
 const Header = ({ title }) => {
   return (
@@ -8,4 +9,4 @@ const Header = ({ title }) => {
   );
 };
 
-export default Header;
+export default HigherComp(Header);

@@ -1,4 +1,5 @@
 import React from "react";
+import HigherComp from "./HigherComp";
 
 const Footer = ({ title }) => {
   return (
@@ -8,4 +9,4 @@ const Footer = ({ title }) => {
   );
 };
 
-export default Footer;
+export default HigherComp(Footer);
