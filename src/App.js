@@ -1,44 +1,28 @@
 import React from "react";
-import { Header, Footer } from "./components";
+import { Navbar } from "./components";
+import {
+  RouterProvider,
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+import { About, Contact, Home, NotFound } from "./pages";
+import RouteLayout from "./layouts/RouteLayout";
 
-const data = [
-  {
-    name: "Mo",
-    desc: "lorem",
-  },
-  {
-    name: "Alex",
-    desc: "lorem",
-  },
-  {
-    name: "Ran",
-    desc: "lorem",
-  },
-  {
-    name: "Conan",
-    desc: "lorem",
-  },
-  {
-    name: "Togo",
-    desc: "lorem",
-  },
-];
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RouteLayout />}>
+      <Route index element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+
+      <Route path="*" element={<NotFound />} />
+    </Route>
+  )
+);
 
 const App = () => {
-  return (
-    <div>
-      <Header title="This is a Header" />
-      <main>
-        {data.map((item) => (
-          <ul key={`${Math.random()}-id`}>
-            <li>{item.name}</li>
-            <li>{item.desc}</li>
-          </ul>
-        ))}
-      </main>
-      <Footer title="This is a Footer" />
-    </div>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 };
 
 export default App;
