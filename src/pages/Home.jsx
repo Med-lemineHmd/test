@@ -1,20 +1,8 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { Footer, Header } from "../components";
+import { UserContext } from "../layouts/RouteLayout";
 
 const Home = () => {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) => {
-        setUsers(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
   // useEffect(() => {
   //   fetch("https://jsonplaceholder.typicode.com/users")
   //     .then((res) => res.json())
@@ -26,17 +14,21 @@ const Home = () => {
   // }, []);
 
   return (
-    <>
-      <Header title="This is a Header" />
-      <main>
-        {users.map((user) => (
-          <div key={user.id}>
-            <p>{user.name}</p>
-          </div>
-        ))}
-      </main>
-      <Footer title="This is a Footer" />
-    </>
+    <UserContext.Consumer>
+      {(users) => (
+        <>
+          <Header title="This is a Header" />
+          <main>
+            <ul>
+              {users.map((user) => (
+                <li key={user.id}>{user.name}</li>
+              ))}
+            </ul>
+          </main>
+          <Footer title="This is a Footer" />
+        </>
+      )}
+    </UserContext.Consumer>
   );
 };
 

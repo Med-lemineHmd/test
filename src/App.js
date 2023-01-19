@@ -1,5 +1,4 @@
-import React from "react";
-import { Navbar } from "./components";
+import React, { createContext, useEffect, useState } from "react";
 import {
   RouterProvider,
   Route,
@@ -8,6 +7,7 @@ import {
 } from "react-router-dom";
 import { About, Contact, Home, NotFound } from "./pages";
 import RouteLayout from "./layouts/RouteLayout";
+import axios from "axios";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
